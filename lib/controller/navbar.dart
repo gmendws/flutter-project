@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'login_page.dart';
+import '../pages/login_page.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({Key? key}) : super(key: key);
@@ -12,8 +12,8 @@ class NavBar extends StatelessWidget {
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text('Marcos e Guilherme'),
-            accountEmail: Text('marcos_guilherme@utfpr.edu'),
+            accountName: const Text('Marcos e Guilherme'),
+            accountEmail: const Text('marcos_guilherme@utfpr.edu'),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child: Image.network(
@@ -26,12 +26,18 @@ class NavBar extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.exit_to_app),
-            title: Text('Sair'),
-            onTap: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => LoginPage())),
+            leading: const Icon(Icons.exit_to_app),
+            title: const Text('Sair'),
+            onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const LoginPage())),
           ),
-          Divider(),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.exit_to_app),
+            title: const Text('Sair'),
+            onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const LoginPage())),
+          )
         ],
       ),
     );

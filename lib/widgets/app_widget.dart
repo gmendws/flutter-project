@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/controller/app_controller.dart';
-import 'package:flutter_application/pages/details_page.dart';
 import 'package:flutter_application/pages/login_page.dart';
 
 class AppWidget extends StatelessWidget {
