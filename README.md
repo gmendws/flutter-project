@@ -1,16 +1,23 @@
-# flutter_application
+Membros do grupo:
+Marcos Henrique Gaspari R.A. 2144174
+Guilherme Mendes R.A. 2142414
+Victor Silvano Verri R.A. 1914871
 
-A new Flutter project.
 
-## Getting Started
+O trabalho desenvolvido é para utilização de uma mobiliaria que possui um estoque de produtos.
+A tela inicial contem um login para acesso e caso não possua cadastro, temos a possibilidade um novo cadastro.
+Após o login temos a home_page onde possui uma navBar com o e-mail utilizado para o login e um botão para sair da aplicação. Possui uma listagem com as categorias dos produtos que são elas: Cozinha, Escritório, Sala, Quarto e Banheiro.
+Na tela seguinte temos uma listagem com os produtos relacionado com a categoria selecionada, onde possui os atributos de nome, valor e imagem.
+Na seleção de um produto temos a página de detalhe do produto, onde contém uma botão para compra e um para selecionar a quantidade de itens. 
 
-This project is a starting point for a Flutter application.
+Bugs:
 
-A few resources to get you started if this is your first Flutter project:
+Não está filtrando os produtos após selecionar uma categoria.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Novas funcionalidades: 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Inserção de um produto.
+Exclusão de um produto.
+Edição de um produto.
+Botão com a quantidade em estoque 
+Botão para compra do produto.
