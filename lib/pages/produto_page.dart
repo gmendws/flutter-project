@@ -38,7 +38,10 @@ class _ProdutoPageState extends State<ProdutoPage> {
   }
 
   Widget build(BuildContext context) {
-    final tabela = ProdutoRepository.tabela;
+    var tabela = ProdutoRepository.tabela;
+    var resultado = tabela
+        .where((element) => element.category == widget.category.id)
+        .toList();
 
     return Scaffold(
       appBar: AppBar(
@@ -76,9 +79,9 @@ class _ProdutoPageState extends State<ProdutoPage> {
                     decoration: const BoxDecoration(),
                   ),
                   ListView.builder(
-                    itemCount: tabela.length,
+                    itemCount: resultado.length,
                     itemBuilder: (context, index) => ProductCard(
-                      produto: tabela[index],
+                      produto: resultado[index],
                     ),
                   ),
                 ],

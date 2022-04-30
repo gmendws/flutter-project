@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../models/produto.dart';
+
 class addProduto extends StatefulWidget {
   addProduto({Key? key}) : super(key: key);
 
@@ -40,17 +42,6 @@ class _addProdutoState extends State<addProduto> {
                 ),
                 SizedBox(height: 15),
                 CustomTextField(
-                  label: 'Categoria',
-                  hint: 'categoria do produto...',
-                  icon: Icons.category_rounded,
-                  validator: (text) {
-                    if (text == null || text.isEmpty) {
-                      return 'Esse campo não pode ser nulo';
-                    }
-                  },
-                ),
-                SizedBox(height: 15),
-                CustomTextField(
                   label: 'Descrição',
                   hint: 'descrição do produto...',
                   icon: Icons.description_rounded,
@@ -65,6 +56,7 @@ class _addProdutoState extends State<addProduto> {
                   label: 'Valor',
                   hint: 'valor do produto...',
                   icon: Icons.price_change_rounded,
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
                   validator: (text) {
                     if (text == null || text.isEmpty) {
                       return 'Esse campo não pode ser nulo';
@@ -113,21 +105,24 @@ class CustomTextField extends StatelessWidget {
   final IconData? icon;
   final String? Function(String? text)? validator;
   final void Function(String? text)? onSaved;
+  final TextInputType? keyboardType;
 
-  const CustomTextField(
-      {Key? key,
-      required this.label,
-      this.icon,
-      this.hint,
-      this.validator,
-      this.onSaved})
-      : super(key: key);
+  const CustomTextField({
+    Key? key,
+    required this.label,
+    this.icon,
+    this.hint,
+    this.validator,
+    this.onSaved,
+    this.keyboardType,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       validator: validator,
       onSaved: onSaved,
+      keyboardType: keyboardType,
       decoration: InputDecoration(
         labelText: label,
         hintText: hint,
