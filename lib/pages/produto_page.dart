@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../controller/produto_card.dart';
 import '../models/categories.dart';
 import '../models/produto.dart';
 import '../repositories/produto_repository.dart';
+import 'addproduto_page.dart';
 import 'details_page.dart';
 
 class ProdutoPage extends StatefulWidget {
@@ -26,6 +28,15 @@ class _ProdutoPageState extends State<ProdutoPage> {
     );
   }
 
+  adicionaProduto() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => addProduto(),
+      ),
+    );
+  }
+
   Widget build(BuildContext context) {
     final tabela = ProdutoRepository.tabela;
 
@@ -35,8 +46,23 @@ class _ProdutoPageState extends State<ProdutoPage> {
           widget.category.nome,
           style: const TextStyle(fontSize: 20),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.lightBlue,
         elevation: 0.0,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          adicionaProduto();
+        },
+        backgroundColor: Colors.lightBlue,
+        icon: Icon(Icons.add),
+        label: Text(
+          'Adicionar',
+          style: TextStyle(
+            letterSpacing: 0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: SafeArea(
         bottom: false,
@@ -47,9 +73,7 @@ class _ProdutoPageState extends State<ProdutoPage> {
               child: Stack(
                 children: <Widget>[
                   Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.black,
-                    ),
+                    decoration: const BoxDecoration(),
                   ),
                   ListView.builder(
                     itemCount: tabela.length,

@@ -26,9 +26,8 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       drawer: const NavBar(),
-      backgroundColor: Colors.black.withOpacity(0.7),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.lightBlue,
         elevation: 0.0,
       ),
       body: Container(
@@ -36,7 +35,7 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const Padding(
-              padding: EdgeInsets.only(top: 10, bottom: 10),
+              padding: EdgeInsets.only(top: 20, bottom: 10),
               child: Text(
                 'Selecione uma categoria',
                 textAlign: TextAlign.center,

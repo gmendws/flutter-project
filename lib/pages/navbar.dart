@@ -12,8 +12,8 @@ class NavBar extends StatelessWidget {
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text('Marcos e Guilherme'),
-            accountEmail: Text('marcos_guilherme@utfpr.edu'),
+            accountName: Text('Username'),
+            accountEmail: Text('username@example.com'),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child: Image.network(
@@ -27,7 +27,7 @@ class NavBar extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.exit_to_app),
-            title: Text('Sair'),
+            title: Text('Logoff'),
             onTap: () => Navigator.of(context)
                 .push(MaterialPageRoute(builder: (context) => LoginPage())),
           ),

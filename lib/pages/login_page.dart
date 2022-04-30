@@ -35,11 +35,11 @@ class _LoginPageState extends State<LoginPage> {
       if (isLogin) {
         titulo = 'Bem vindo';
         actionButton = 'Login';
-        toggleButton = 'Ainda não tem conta? Cadastre-se agora.';
+        toggleButton = 'Caso não tenha conta, cadastre-se agora';
       } else {
         titulo = 'Crie sua Conta';
         actionButton = 'Cadastrar';
-        toggleButton = 'Voltar ao Login.';
+        toggleButton = 'Voltar ao Login';
       }
     });
   }
@@ -54,7 +54,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top: 100),
@@ -110,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Informe sua senha!';
+                        return 'Informe a sua senha!';
                       } else if (value.length < 6) {
                         return 'Sua senha deve conter no mínimo 6 caracteres';
                       }
@@ -133,7 +132,6 @@ class _LoginPageState extends State<LoginPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.login),
                         Padding(
                           padding: EdgeInsets.all(16.0),
                           child: Text(

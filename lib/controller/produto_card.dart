@@ -57,7 +57,7 @@ class _ProductCardState extends State<ProductCard> {
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 35),
                       height: 140,
-                      width: 140,
+                      width: 190,
                       child: Image.asset(
                         widget.produto.image,
                         fit: BoxFit.cover,

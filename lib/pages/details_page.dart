@@ -10,17 +10,29 @@ class Details extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: buildAppBar(context),
       body: Body(
         produto: produto,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {},
+        label: Text(
+          'Editar',
+          style: TextStyle(
+            letterSpacing: 0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        icon: Icon(Icons.edit),
+        backgroundColor: Colors.lightBlue,
       ),
     );
   }
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.lightBlue,
       elevation: 0,
       leading: IconButton(
         padding: EdgeInsets.only(left: 20.0),
@@ -41,7 +53,10 @@ class Details extends StatelessWidget {
       actions: <Widget>[
         IconButton(
           onPressed: () {},
-          icon: SvgPicture.asset('images/cart_with_item.svg'),
+          icon: Icon(
+            Icons.delete_forever,
+            color: Colors.black,
+          ),
         ),
       ],
     );
