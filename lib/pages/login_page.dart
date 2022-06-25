@@ -1,10 +1,8 @@
 // ignore_for_file: prefer_const_constructors, deprecated_member_use
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application/pages/chat_page.dart';
+import 'package:flutter_application/services/auth_service.dart';
+import 'package:provider/provider.dart';
 
-import 'home_page.dart';
-import 'navbar.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -22,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   late String titulo;
   late String actionButton;
   late String toggleButton;
+  bool loading = false;
 
   @override
   void initState() {
@@ -35,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
       if (isLogin) {
         titulo = 'Bem vindo';
         actionButton = 'Login';
-        toggleButton = 'Caso não tenha conta, cadastre-se agora';
+        toggleButton = 'Ainda não tem conta, cadastre-se agora';
       } else {
         titulo = 'Crie sua Conta';
         actionButton = 'Cadastrar';
@@ -44,12 +43,27 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-  login() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomePage()));
+  login() async {
+    setState(() => loading = true);
+    try {
+      await context.read<AuthService>().login(email.text, senha.text);
+    } on AuthException catch (e) {
+      setState(() => loading = false);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
+    }
   }
 
-  registrar() {}
+  registrar() async {
+    setState(() => loading = true);
+    try {
+      await context.read<AuthService>().registrar(email.text, senha.text);
+    } on AuthException catch (e) {
+      setState(() => loading = false);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +145,21 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: (loading)
+                      ?[
+                        Padding(padding: EdgeInsets.all(16),
+                         child: SizedBox(
+                           width: 24,
+                            height: 24,
+                             child:  CircularProgressIndicator(
+                               color: Colors.white,
+                               ),
+                         ),
+                        ) 
+                      ]
+                      :
+                      [
+                      
                         Padding(
                           padding: EdgeInsets.all(16.0),
                           child: Text(

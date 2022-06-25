@@ -1,6 +1,8 @@
+// ignore_for_file: prefer_const_constructors, deprecated_member_use, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
-
-import 'login_page.dart';
+import 'package:flutter_application/pages/documentos_page.dart';
+import 'package:flutter_application/services/auth_service.dart';
+import 'package:provider/provider.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({Key? key}) : super(key: key);
@@ -12,8 +14,8 @@ class NavBar extends StatelessWidget {
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text('Username'),
-            accountEmail: Text('username@example.com'),
+            accountName: const Text('Username'),
+            accountEmail: const Text('username@example.com'),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child: Image.network(
@@ -25,13 +27,39 @@ class NavBar extends StatelessWidget {
               ),
             ),
           ),
-          ListTile(
-            leading: Icon(Icons.exit_to_app),
-            title: Text('Logoff'),
-            onTap: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => LoginPage())),
-          ),
           Divider(),
+          ListTile(
+            leading: Icon(Icons.camera_alt),
+            title: Text('Alterar foto de perfil'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DocumentosPage(),
+                fullscreenDialog: true
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: OutlinedButton(
+              onPressed: () => context.read<AuthService>().logout(),
+              style: OutlinedButton.styleFrom(
+                primary: Colors.red,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(14.0),
+                    child: Text(
+                      'Sair do App',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

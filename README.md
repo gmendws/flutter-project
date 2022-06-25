@@ -20,4 +20,4 @@ Inserção de um produto.
 Exclusão de um produto.
 Edição de um produto.
 Botão com a quantidade em estoque 
-Botão para compra do produto.
+

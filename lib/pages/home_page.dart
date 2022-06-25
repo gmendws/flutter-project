@@ -3,6 +3,7 @@ import 'package:flutter_application/pages/produto_page.dart';
 
 import '../models/categories.dart';
 import '../repositories/categories_repository.dart';
+import '../repositories/category_repository.dart';
 import 'navbar.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,11 +12,26 @@ class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
 }
+List lista = [];
+List<Category> listaCategoria = [];
+
+getCategorias() async{
+  lista = await CategoryRepository().getCategory();
+  for(var item in lista){
+    int id = item["id"];
+    String  nome = item["nome"];
+    String icone = item["icone"];
+    Category categ = new Category(id: id, icone: icone, nome: nome);
+    listaCategoria.add(categ);
+    }
+    return true;
+}
 
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final tabela = CategoriesRepository.tabela;
+    var a = getCategorias();
+    final tabela = listaCategoria;
 
     mostraProduto(Category category) {
       Navigator.push(

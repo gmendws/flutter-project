@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/controller/app_controller.dart';
-import 'package:flutter_application/pages/login_page.dart';
+import 'package:flutter_application/widgets/auth_check.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class AppWidget extends StatelessWidget {
           theme: ThemeData(
             brightness: Brightness.dark,
           ),
-          home: LoginPage(),
+          home: AuthCheck(),
         );
       },
     );

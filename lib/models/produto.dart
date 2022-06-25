@@ -10,11 +10,29 @@ class Produto {
   String description;
 
   Produto({
-    required this.id,
-    required this.category,
-    required this.valor,
-    required this.title,
-    required this.image,
-    required this.description,
+    this.id = 0,
+    this.category = 0,
+    this.valor = 0,
+    this.title = '',
+    this.image = '',
+    this.description = '',
   });
+
+  Produto copyWith({
+    int? id,
+    int? category,
+    double? valor,
+    String? title,
+    String? image,
+    String? description,
+  }) {
+    return copyWith(
+      id: id ?? this.id,
+      category: category ?? this.category,
+      valor: valor ?? this.valor,
+      title: title ?? this.title,
+      image: image ?? this.image,
+      description: description ?? this.description,
+    );
+  }
 }
