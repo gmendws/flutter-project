@@ -21,3 +21,9 @@ Exclusão de um produto.
 Edição de um produto.
 Botão com a quantidade em estoque 
 
+
+Parte 3: 
+
+Inserido a utilização do banco de dados para a "categoria" e "produto".
+Inserido a chamada da câmera e galeria do celular para inserir a foto no appBar.
+
